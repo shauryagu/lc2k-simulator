@@ -1,0 +1,15 @@
+        lw      0       1       five    load reg1 with 5 (symbolic address) - note that this instruction is address 0
+        lw      0       2       neg1   load reg2 with -1 (numeric address)
+start   add     1       2       1       decrement reg1
+        lw      0       5       jAdd    load 1 into reg 5
+        jalr    5       6               jump to pc+1
+jump    beq     0       1       done       goto end of program when reg1==0
+        beq     0       0       start   go back to the beginning of the loop
+        noop
+        noop
+done    halt                            end of program
+five    .fill   5
+neg1    .fill   -1
+jAdd    .fill   jump
+stAddr  .fill   start                   will contain the address of start (2)
+three   .fill   3

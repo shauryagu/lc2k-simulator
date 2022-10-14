@@ -1,0 +1,25 @@
+        lw      0       1       Zero        initializes reg1 to zero
+        lw      0       2       mcand       stores number being multiplied
+        lw      0       3       mplier      stores multiplier (second number)
+        lw      0       4       bitnum      stores what is being masked
+        lw      0       7       Fift        is the final bit
+        lw      0       6       negOne
+        noop                                this is where the multiplying starts
+loop    nor     3       3       5
+        nor     4       4       4
+        nor     5       4       5           these NOR operations are to do bit masking
+        nor     4       4       4
+        beq     0       5       skip
+        add     1       2       1           stores the result of multiplication of indiv. bits
+skip    add     6       7       7           subtract 1 bit
+        add     2       2       2           shifts the number we are adding to the result (top num)
+        add     4       4       4           shifts the bit to be masked
+        beq     0       7       done        checks if it has looked at 15 bits, if it has, halt
+        beq     0       0       loop
+done    halt
+mcand   .fill   1103
+mplier  .fill   7043
+bitnum  .fill   1
+negOne  .fill   -1
+Zero    .fill   0
+Fift    .fill   15
